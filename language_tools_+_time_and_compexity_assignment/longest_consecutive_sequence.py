@@ -51,7 +51,6 @@ def longestConsecutiveSubsequence(l):
             if j + 1 in d:
                 d[l[i]][0] += 1
                 j += 1
-                #print("adhya")
             else:
                 d[l[i]][1] = False
                 
@@ -61,7 +60,6 @@ def longestConsecutiveSubsequence(l):
     #print(d)
     #print("max", maxlength)       
     for i in range(maxlength):
-        #print("ilu")
         ans.append(start)
         start += 1
     return ans
