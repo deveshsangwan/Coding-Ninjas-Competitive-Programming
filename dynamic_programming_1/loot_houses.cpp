@@ -16,19 +16,17 @@ Sample Output 1 :
 */
 #include<bits/stdc++.h>
 using namespace std;
-int getMaxMoney(int arr[], int n){
+int maxMoneyLooted(int *arr, int n)
+{
+	//Write your code here
+    if (n  == 1) return arr[0];
 
-	/*Write your code here.
-	 *Don’t write main(). 
-	 *Don’t take input, it is passed as function argument.
-	 *Don’t print output.
-	 *Taking input and printing output is handled automatically.
-         */ 
-    int dp[n];
-    dp[0] = arr[0];
-    dp[1] = arr[1];
-    for(int i = 2; i < n; i++){
-        dp[i] = arr[i] + max(dp[i - 2], dp[i - 3]);
+    int prev = arr[0];
+    int curr = max(arr[0], arr[1]);
+    for (int i = 2; i < n; i++) {
+        int temp = curr;
+        curr = max(curr, prev + arr[i]);
+        prev = temp;
     }
-    return max(dp[n - 1], dp[n - 2]);
+    return max(prev, curr);
 }
